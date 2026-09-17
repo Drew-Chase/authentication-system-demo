@@ -1,0 +1,1 @@
+For information please see the @AGENTS.md file!
