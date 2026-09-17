@@ -24,7 +24,7 @@ export default defineConfig({
             }
         },
         watch: {
-            ignored: ["**/src-*/**"]
+            ignored: ["**/src-*/**", "vendor/**", ".bruno/**", ".docker/**", "composer.*", "**/.git/**", "**/node_modules/**", "dist/**", "**/*.log", ".env*", ".htaccess", "nginx.conf", "set_root.php", "scripts/**", "Justfile", "**/*.md"]
         }
     },
     build: {
