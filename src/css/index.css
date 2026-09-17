@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import "tailwindcss";
+@import "@heroui/styles";
+
+/* Class-based dark mode — replaces tailwind.config.js darkMode: "class" */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Font family — replaces tailwind.config.js theme.fontFamily.sans */
+@theme {
+  --font-sans: 'Roboto', sans-serif;
+}
+
+/* Custom brand colors — replaces heroui() plugin theme overrides */
+:root {
+  --accent: #f13848;
+  --accent-foreground: #fff;
+  --background: #e3e3ea;
+
+  --scrollbar-background-color: transparent;
+  --scrollbar-thumb-color: var(--accent);
+  --scrollbar-thumb-hover-color: var(--accent);
+  overflow: auto;
+  scrollbar-color: var(--scrollbar-thumb-color) var(--scrollbar-background-color);
+  scrollbar-width: thin;
+  scrollbar-gutter: stable;
+}
+
+.dark {
+  --accent: #ff3247;
+  --background: #18181b;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-background-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb-color);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--scrollbar-thumb-hover-color);
+}
+
+::selection {
+  background-color: var(--accent);
+  color: var(--accent-foreground);
+}
+
+input:focus-visible,
+textarea:focus-visible {
+  outline: none !important;
+}
