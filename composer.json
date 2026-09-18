@@ -1,7 +1,9 @@
 {
     "require": {
         "slim/slim": "^4.15",
-        "slim/psr7": "^1.8"
+        "slim/psr7": "^1.8",
+        "ext-mysqli": "*",
+        "vlucas/phpdotenv": "^5.7"
     },
     "autoload": {
         "psr-4": {
