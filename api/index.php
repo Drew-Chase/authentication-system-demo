@@ -2,18 +2,21 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../set_root.php';
 
-use routes\TestRoute;
 use Slim\Factory\AppFactory;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
 
+$dotenv = Dotenv\Dotenv::createImmutable($_SERVER["DOCUMENT_ROOT"]);
+// This will suppress exceptions if the .env file is not present.
+// This is good for production where you would normally use the env in the docker container or in the systemd service.
+$dotenv->safeLoad();
+
 $app = AppFactory::create();
 $app->addRoutingMiddleware();
 $app->setBasePath("/api");
-$app->addErrorMiddleware(true, true, true);
 
 // Replace Slim's default HTML error handler with JSON
-$errorMiddleware = $app->addErrorMiddleware(true, true, true);
+$errorMiddleware = $app->addErrorMiddleware(false, true, true);
 $errorMiddleware->setDefaultErrorHandler(
     function (
         Request   $request,
@@ -45,6 +48,6 @@ $errorMiddleware->setDefaultErrorHandler(
 );
 
 // ENDPOINTS
-TestRoute::configure($app);
+
 
 $app->run();
