@@ -10,7 +10,7 @@ install:
     composer install
     pnpm i
 
-dev: install
+dev: check-php install
     pnpm run dev
 
 [windows]
@@ -46,3 +46,6 @@ clean:
 [macos]
 clean:
     @rm -rdf ./dist
+
+check-php:
+    @composer check-platform-reqs
