@@ -7,6 +7,7 @@ use DateTime;
 use Exception;
 use Hashids\Hashids;
 use JsonSerializable;
+use Krixon\MultiFactorAuth\MultiFactorAuth;
 use mysqli;
 
 class User implements JsonSerializable
@@ -106,6 +107,15 @@ class User implements JsonSerializable
         return self::getUserById($db, $last_id);
     }
 
+    public function registerMFA(mysqli $db):void{
+        $mfa = MultiFactorAuth::default(getenv("APP_NAME"));
+        $secret = $mfa->generateSecret();
+        $stmt = $db->prepare("UPDATE users SET mfa_secret = ? WHERE id = ?");
+        $stmt->bind_param('si', $secret, $id);
+        $stmt->execute();
+        $stmt->close();
+    }
+
     /**
      * Specifies the data to be serialized into JSON format.
      *
@@ -154,5 +164,13 @@ class User implements JsonSerializable
     {
         $salt = getenv("USER_ID_SALT");
         return new Hashids($salt, 6);
+    }
+    private function render_php(string $template): string
+    {
+        ob_start();
+        include(__DIR__ . "/api/templates/$template.php");
+        $contents = ob_get_contents();
+        ob_end_clean();
+        return $contents;
     }
 }

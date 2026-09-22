@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3fe271e1bff924799f7f2695a4bba891",
+    "content-hash": "5aef6546927a1e25fcdd43e9217d5cc9",
     "packages": [
         {
             "name": "fig/http-message-util",
@@ -192,6 +192,52 @@
                 "source": "https://github.com/vinkla/hashids/tree/5.0.2"
             },
             "time": "2023-02-23T15:00:54+00:00"
+        },
+        {
+            "name": "krixon/multi-factor-auth",
+            "version": "0.5.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/krixon/multi-factor-auth.git",
+                "reference": "e964e0cbc1fe445dfee5e29d28b999b15ed06f0e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/krixon/multi-factor-auth/zipball/e964e0cbc1fe445dfee5e29d28b999b15ed06f0e",
+                "reference": "e964e0cbc1fe445dfee5e29d28b999b15ed06f0e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "ext-curl": ">=7.2",
+                "php-coveralls/php-coveralls": "^2.1",
+                "php-mock/php-mock-phpunit": "^2.3",
+                "phpunit/phpunit": "^8.1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Krixon\\MultiFactorAuth\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Karl Rixon",
+                    "email": "karlrixon@gmail.com"
+                }
+            ],
+            "description": "Multi-factor authentication library for PHP7",
+            "support": {
+                "issues": "https://github.com/krixon/multi-factor-auth/issues",
+                "source": "https://github.com/krixon/multi-factor-auth/tree/master"
+            },
+            "time": "2020-02-13T09:24:56+00:00"
         },
         {
             "name": "nikic/fast-route",
